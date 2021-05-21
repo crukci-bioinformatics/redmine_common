@@ -1,0 +1,15 @@
+<p><%= l(:settings_help_text_top) %></p>
+
+<p><label for='settings_holiday_url'><span title="<%= l(:settings_holiday_url_descr) %>"><%= l(:settings_holiday_url_label) %></span></label>
+   <%= text_field_tag 'settings[holiday_url]', @settings['holiday_url'] %>
+</p>
+
+<p><label for='settings_non_chargeable'><span title="<%= l(:settings_non_chargeable_descr) %>"><%= l(:settings_non_chargeable_label) %></span></label>
+   <%= text_field_tag 'settings[non_chargeable]', @settings['non_chargeable'] %>
+</p>
+
+<p><label for='settings_billable'><span title="<%= l(:settings_billable_descr) %>"><%= l(:settings_billable_label) %></span></label>
+   <%= text_field_tag 'settings[billable]', @settings['billable'] %>
+</p>
+
+<p><a href="/project_state/configure"><%= l(:conf_link) %></a></p>

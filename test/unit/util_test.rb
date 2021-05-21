@@ -27,4 +27,17 @@ class UtilitiesTest < ActiveSupport::TestCase
     assert(plist.include?(6),"Missing project 6")
   end
 
+  def test_collectProjects
+    str = "alpha ; eCookbook"
+    plist = collectProjects(str)
+    assert_equal(8,plist.length,"Plist wrong length.")
+    assert(plist.include?(1),"Parent ID 1 missing")
+    assert(plist.include?(20),"Parent ID 20 missing")
+    assert(plist.include?(4),"Missing project 4")
+    assert(plist.include?(5),"Missing project 5")
+    assert(plist.include?(6),"Missing project 6")
+    assert(plist.include?(21),"Missing project 21")
+    assert(plist.include?(22),"Missing project 22")
+  end
+
 end

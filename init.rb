@@ -1,4 +1,5 @@
 require 'redmine'
+require_dependency 'bioinf_common/patches'
 
 Redmine::Plugin.register :bioinf_common do
   name 'Bioinf Common plugin'
@@ -11,11 +12,11 @@ Redmine::Plugin.register :bioinf_common do
   settings(:default => { 'non_chargeable' => 'Experimental Design Meetings; Statistics Clinic Meeting',
                          'holiday_url' => 'https://www.gov.uk/bank-holidays.json',
                          'billable' => 'Research Groups; Fitzgerald; Genomics; Innovation Lab'},
-           :partial => 'settings/project_state_settings' )
+           :partial => 'settings/bioinf_common_settings' )
 end
 
-#Rails.configuration.after_initialize do
-#  Issue.send(:include,ProjectStatePlugin::IssuePatch)
+Rails.configuration.after_initialize do
+  Issue.send(:include,Bioinf_Common::IssuePatch)
 #  Project.send(:include,ProjectStatePlugin::ProjectPatch)
   # the following steps are necessary in case the "root_projects" variable
   # has been altered... may need to add new projects to the custom fields,
@@ -27,4 +28,4 @@ end
 #  projSet = initr.ensure_projects_have_custom_fields
 #  initr.populate_reports
 #  initr.ensure_issues_have_custom_fields(projSet)
-#end
+end
